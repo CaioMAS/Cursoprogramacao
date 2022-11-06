@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+}
+
+#container {
+width: 200px;
+}
+
+.m-4{
+margin: 40px;
+
+
+}
+
+
+
+h1, h2{
+    color: red;
+    font-size: 40px;
+    background: gray;
+}

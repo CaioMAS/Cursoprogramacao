@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculando ferragem</title>
+</head>
+
+<body>
+    <h1>Calculadora de ferragem</h1>
+    <form>
+        <label for="fname">Quantidade de pilares (und)</label><br>
+        <input type="number" name="txtp" id="txtp" required><br>
+        <label for="lname">Quantidade de barras dos pilares (und):</label><br>
+        <input type="number" name="txtb" id="txtb" required><br><br>
+        <label for="lname">Tamanho dos pilares (m):</label><br>
+        <input type="number" name="txtt" id="txtt" required><br><br>
+        <label for="lname">Distância dos estribos (m):</label><br>
+        <input type="number" name="txtd" id="txtd" required><br><br>
+        <label for="lname">Dimensão dos estribos (m):</label><br>
+        <input type="number" name="txte1" id="txte1" required>*
+        <input type="number" name="txte2" id="txte2" required></p>
+        <p><input type="button" value="CALCULAR" onclick="validation()"></p>
+        <p><input type="reset" value="LIMPAR" onclick="validation()"></p>
+        <div id="res">
+
+        </div>
+    </form>
+
+
+    <div>Código do Caio</div>
+
+    <script>
+        function validation() {
+            let listQuanty = [{
+                    'id': 'txtp',
+                    'value': txtp.value
+                }, {
+                    'id': 'txtb',
+                    'value': txtb.value
+                }, {
+                    'id': 'txtt',
+                    'value': txtt.value
+                }, {
+                    'id': 'txtd',
+                    'value': txtd.value
+                }, {
+                    'id': 'txte1',
+                    'value': txte1.value
+                }, {
+                    'id': 'txte2',
+                    'value': txte2.value
+                }
+
+            ]
+            let listSize = listQuanty.filter(element => {
+                if (element.value.length === 0) {
+                    document.getElementById(element.id).style.borderColor = "red"
+                    return false
+                } else {
+                    document.getElementById(element.id).style.borderColor = "green"
+                    return true
+                }
+
+            })
+            if (listSize.length >= 6) {
+                calculate(txtp.value, txtb.value, txtt.value, txtd.value, txte1.value, txte2.value)
+            }
+
+
+        }
+
+        function calculate(qpilar, qbarra, tpilar, distestri, dim1, dim2) {
+            var res = window.document.getElementById('res')
+            var quantbpilar = ((qpilar * qbarra * tpilar) / 12)
+            var quantbestribos = (((qpilar * tpilar) / distestri) * (dim1 * 2 + dim2 * 2 + 0.06)) / 12
+            res.innerHTML = `<p>A quantidade de barras para pilares são: ${Math.round(quantbpilar)} barras de 12 metros </p>`
+            res.innerHTML += `<p>A quantidade de barras para os estribos são: ${Math.round(quantbestribos)} barras de 12 metros</p>`
+            return res
+        }
+    </script>
+</body>
+
+</html>

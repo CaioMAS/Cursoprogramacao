@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="enpt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos DOM</title>
+    <style>
+        div#área{
+            background: rgb(53, 192, 53);
+            color: white;
+            width: 200px;
+            height: 200px;            
+            text-align: center;
+            font: Normal 16pt Arial;
+            line-height: 200px;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div id = "área">
+        Interaja ...
+
+    </div>
+    
+    <script>
+
+        var a = window.document.getElementById('área') //essa variável se remete a div área
+        a.addEventListener ('click' , clicar) //vai ficar esperando esse evento acontecer
+        a.addEventListener ('mouseenter' , entrar) //vai ficar esperando esse evento acontecer
+        a.addEventListener ('mouseout' , sair) //vai ficar esperando esse evento acontecer
+
+        function clicar() { //criei a função clicar que está dentro da div onclick
+            
+            a.innerText = 'Clicou !' //esse código vai fazer aparecer a mensagem que escolhi na variável A
+            a.style.background = 'red' //quando clicar a cor de fundo 'backgroud' vai ficar vermelho
+        }
+
+        function entrar() {
+            
+            a.innerText = 'Entrou !'
+        }
+
+        function sair(){
+            a.innerText = 'Saiu !'
+            a.style.background = 'green'
+        }
+
+
+    </script>
+</body>
+</html>

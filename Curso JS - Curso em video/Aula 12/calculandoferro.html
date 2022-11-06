@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculando ferragem</title>
+</head>
+<body>
+    <h1>Calculadora de ferragem</h1>
+    <p>Quantidade de pilares (und): <input type="number" name="txtp" id="txtp"></p>
+    <p>Quantidade de barras dos pilares (und): <input type="number" name="txtb" id="txtb"></p>
+    <p>Tamanho dos pilares (m): <input type="number" name="txtt" id="txtt"></p>
+    <p>Distância dos estribos (m): <input type="number" name="txtd" id="txtd"></p>
+    <p>Dimensão dos estribos (m): <input type="number" name="txte1" id="txte1"> x 
+        <input type="number" name="txte2" id="txte2"></p>
+    <p><input type="button" value="CALCULAR" onclick="calcular()"></p>
+    <div id = "res">
+
+    </div>
+
+    <div>CódigodoCaio</div>
+
+    <script>
+        function calcular(){
+            var qpilar = window.document.getElementById('txtp')
+            var qbarra = window.document.getElementById('txtb')
+            var tpilar = window.document.getElementById('txtt')
+            var distestri = window.document.getElementById('txtd')
+            var dim1 = window.document.getElementById('txte1')
+            var dim2 = window.document.getElementById('txte2')
+            var a = Number(txtp.value) //Quantidade de pilares (und)
+            var b = Number(txtb.value) //Quantidade de barras dos pilares (und)
+            var c = Number(txtt.value) //Tamanho dos pilares (m)
+            var d = Number(txtd.value) //Distância dos estribos (m)
+            var e = Number(txte1.value) //Dimensão dos estribos (m) 1
+            var f = Number(txte2.value) //Dimensão dos estribos (m) 2
+            var res = window.document.getElementById('res')
+            var quantbpilar = ((a*b*c)/12)
+            var quantbestribos = (((a*c)/d)*(e*2+f*2+0.06))/12
+            res.innerHTML = `<p>A quantidade de barras para pilares são: ${quantbpilar} barras de 12 metros </p>`
+            res.innerHTML += `<p>A quantidade de barras para os estribos são: ${quantbestribos} barras de 12 metros</p>`
+
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>
